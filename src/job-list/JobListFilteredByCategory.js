@@ -7,6 +7,7 @@ function JobListFilteredByCategory() {
   let typeId = parseInt(useParams().typeId);
   let [jobList, setJobList] = useState([]);
   let [page, setPage] = useState(1);
+  let [category, setCategory] = useState({ name: "" });
 
   useEffect(
     function() {
@@ -17,13 +18,43 @@ function JobListFilteredByCategory() {
     [page, typeId]
   );
 
+  useEffect(
+    function() {
+      request(`/api/job-type/${typeId}`)
+        .then(setCategory)
+        .catch(console.log);
+    },
+    [typeId]
+  );
+
   return (
-    <div>
-      {jobList.map(function(job) {
-        return <JobCard key={job.id} job={job}></JobCard>;
-      })}
-      <button onClick={() => setPage((p) => p - 1)}>Prev</button>
-      <button onClick={() => setPage((p) => p + 1)}>Next</button>
+    <div
+      className="align-left-right"
+      style={{
+        paddingTop: "3.2rem"
+      }}>
+      <div className="breadcrumb">
+        <span>GIG</span>
+        <span>{category.name}</span>
+      </div>
+      <h1
+        style={{
+          margin: "1rem 0 3rem 0",
+          fontSize: "3.2rem"
+        }}>
+        {category.name}
+      </h1>
+
+      <div className="job-list">
+        {jobList.map(function(job) {
+          return <JobCard key={job.id} job={job}></JobCard>;
+        })}
+      </div>
+
+      <div className="pagination">
+        <button onClick={() => setPage((p) => p - 1)}>Prev</button>
+        <button onClick={() => setPage((p) => p + 1)}>Next</button>
+      </div>
     </div>
   );
 }

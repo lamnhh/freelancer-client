@@ -10,53 +10,57 @@ import WalletUpdate from "./wallet/WalletUpdate";
 import ChatPage from "./chat/ChatPage";
 import JobListFilteredByCategory from "./job-list/JobListFilteredByCategory";
 import SearchResult from "./job-list/SearchResult";
+import Header from "./common/Header";
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/register">
-          <RegisterPage></RegisterPage>
-        </Route>
-        <Route path="/login">
-          <LoginPage></LoginPage>
-        </Route>
+      <div>
+        <Header></Header>
+        <Switch>
+          <Route path="/register">
+            <RegisterPage></RegisterPage>
+          </Route>
+          <Route path="/login">
+            <LoginPage></LoginPage>
+          </Route>
 
-        <Route path="/" exact>
-          <Homepage></Homepage>
-        </Route>
-        <Route path="/job/:id">
-          <JobPage></JobPage>
-        </Route>
+          <Route path="/" exact>
+            <Homepage></Homepage>
+          </Route>
+          <Route path="/job/:id">
+            <JobPage></JobPage>
+          </Route>
 
-        <Route path="/wallet" exact>
-          <WalletPage></WalletPage>
-        </Route>
-        <Route path="/wallet/history">
-          <WalletHistory></WalletHistory>
-        </Route>
-        <Route path="/wallet/topup">
-          <WalletUpdate action="topup"></WalletUpdate>
-        </Route>
-        <Route path="/wallet/withdraw">
-          <WalletUpdate action="withdraw"></WalletUpdate>
-        </Route>
+          <Route path="/wallet" exact>
+            <WalletPage></WalletPage>
+          </Route>
+          <Route path="/wallet/history">
+            <WalletHistory></WalletHistory>
+          </Route>
+          <Route path="/wallet/topup">
+            <WalletUpdate action="topup"></WalletUpdate>
+          </Route>
+          <Route path="/wallet/withdraw">
+            <WalletUpdate action="withdraw"></WalletUpdate>
+          </Route>
 
-        <Route path="/chat" exact>
-          <ChatPage></ChatPage>
-        </Route>
-        <Route path="/chat/:username">
-          <ChatPage></ChatPage>
-        </Route>
+          <Route path="/chat" exact>
+            <ChatPage></ChatPage>
+          </Route>
+          <Route path="/chat/:username">
+            <ChatPage></ChatPage>
+          </Route>
 
-        <Route path="/job-list/:typeId">
-          <JobListFilteredByCategory></JobListFilteredByCategory>
-        </Route>
+          <Route path="/job-list/:typeId">
+            <JobListFilteredByCategory></JobListFilteredByCategory>
+          </Route>
 
-        <Route path="/search/:text">
-          <SearchResult></SearchResult>
-        </Route>
-      </Switch>
+          <Route path="/search/:text">
+            <SearchResult></SearchResult>
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

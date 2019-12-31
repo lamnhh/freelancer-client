@@ -10,7 +10,7 @@ function SearchResult() {
 
   useEffect(
     function() {
-      request(`/api/job?page=${page}&search=${text}`)
+      request(`/api/job?page=${page}&size=12&search=${text}`)
         .then(setJobList)
         .catch(console.log);
     },
@@ -18,12 +18,21 @@ function SearchResult() {
   );
 
   return (
-    <div>
-      {jobList.map(function(job) {
-        return <JobCard key={job.id} job={job}></JobCard>;
-      })}
-      <button onClick={() => setPage((p) => p - 1)}>Prev</button>
-      <button onClick={() => setPage((p) => p + 1)}>Next</button>
+    <div
+      className="align-left-right"
+      style={{
+        paddingTop: "7rem"
+      }}>
+      <div className="job-list">
+        {jobList.map(function(job) {
+          return <JobCard key={job.id} job={job}></JobCard>;
+        })}
+      </div>
+
+      <div className="pagination">
+        <button onClick={() => setPage((p) => p - 1)}>Prev</button>
+        <button onClick={() => setPage((p) => p + 1)}>Next</button>
+      </div>
     </div>
   );
 }

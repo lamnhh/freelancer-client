@@ -1,0 +1,139 @@
+.header {
+  hr {
+    margin: 0;
+    border: none;
+    border-top: 0.1rem solid #ddd;
+  }
+}
+
+.header-top {
+  padding-top: 2.3rem;
+  padding-bottom: 2.3rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-logo-search {
+  align-items: center;
+  display: flex;
+  img {
+    margin-right: 4rem;
+  }
+}
+
+.header-search {
+  position: relative;
+  input {
+    border-radius: 0.3rem 0 0 0.3rem;
+    border: 0.1rem solid #ddd;
+    border-right-width: 0;
+    color: #7a7d85;
+    font-size: 1.5rem;
+    padding: 0.7rem 0.7rem 0.7rem 2.8rem;
+    width: 40rem;
+    &:focus {
+      border-color: rgb(153, 153, 153);
+      color: #222325;
+      outline: none;
+    }
+  }
+  button {
+    background-color: #1dbf73;
+    border: none;
+    border-radius: 0 0.3rem 0.3rem 0;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+    transition: 0.05s linear background-color;
+    &:hover {
+      background-color: lighten(#1dbf73, 4%);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &::after {
+    font: 16px FontAwesome;
+    content: "\F002";
+    color: #999;
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 8px;
+  }
+}
+
+.header-actions {
+  button {
+    transition: 0.05s linear all;
+    cursor: pointer;
+    &:hover {
+      color: lighten(#1dbf73, 4%);
+      border-color: lighten(#1dbf73, 4%);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  a {
+    &focus,
+    &hover {
+      outline: none;
+    }
+  }
+  .signin-btn {
+    background: transparent;
+    border: none;
+    color: #7a7d85;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 2rem;
+  }
+  .signup-btn {
+    color: #1dbf73;
+    background: transparent;
+    border-radius: 0.4rem;
+    border: 0.1rem solid #1dbf73;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0.8rem 1.6rem;
+  }
+}
+
+.header {
+  .category-list {
+    align-items: center;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  .category-list__name {
+    margin-right: 6rem;
+    position: relative;
+    a {
+      color: #62646a;
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      padding: 0.8rem 0;
+      text-decoration: none;
+    }
+  }
+
+  .category-list__name:hover a::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #1dbf73;
+  }
+  li {
+    list-style: none;
+    list-style-image: none;
+  }
+}

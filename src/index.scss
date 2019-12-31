@@ -1,11 +1,15 @@
+body,
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-left: 10%;
-  padding-right: 10%;
 }
 
 code {
@@ -19,10 +23,33 @@ label {
 .price-tier {
   border: 0.2rem solid black;
   margin-bottom: 1rem;
-  input[type="radio"] {
-    // visibility: hidden;
-  }
   &.active {
     border-width: 0.6rem;
   }
 }
+
+.align-left-right {
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.breadcrumb {
+  span {
+    color: #62646a;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    transform: scaleY(0.9);
+    display: inline-block;
+    &::after {
+      content: "\f105";
+      font-family: fontAwesome;
+      padding: 0 5px;
+    }
+  }
+}
+
+.pagination {
+  text-align: right;
+}
+
+@import "./styling/base";
