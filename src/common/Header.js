@@ -35,11 +35,11 @@ function Header() {
           </form>
         </div>
         <div className="header-actions">
-          <Link to="/upload-job">
+          {/* <Link to="/upload-job">
             <button type="button" className="signin-btn">
               Upload Job
             </button>
-          </Link>
+          </Link> */}
           <Link to="/login">
             <button type="button" className="signin-btn">
               Sign In

@@ -42,7 +42,9 @@ function JobCard({ job }) {
       <div className="job-card__description">
         <h3>{job.name}</h3>
         <div style={{ textAlign: "right" }}>
-          <img src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/pro_experience_perseus/apps/pro-badge-outline-2.0.f84c499.svg"></img>
+          <img
+            alt=""
+            src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/pro_experience_perseus/apps/pro-badge-outline-2.0.f84c499.svg"></img>
         </div>
       </div>
       <div className="job-card__price">
