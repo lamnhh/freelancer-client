@@ -26,9 +26,11 @@ function Header() {
     <div className="header">
       <div className="header-top align-left-right">
         <div className="header-logo-search">
-          <img
-            alt=""
-            src="https://npm-assets.fiverrcdn.com/assets/@fiverr-private/header/logo.11cc430.svg"></img>
+          <Link to="/">
+            <img
+              alt=""
+              src="https://npm-assets.fiverrcdn.com/assets/@fiverr-private/header/logo.11cc430.svg"></img>
+          </Link>
           <form className="header-search" onSubmit={onSearch}>
             <input type="text" name="search"></input>
             <button type="submit">Search</button>

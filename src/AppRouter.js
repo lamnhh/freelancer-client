@@ -11,6 +11,7 @@ import ChatPage from "./chat/ChatPage";
 import JobListFilteredByCategory from "./job-list/JobListFilteredByCategory";
 import SearchResult from "./job-list/SearchResult";
 import Header from "./common/Header";
+import Footer from "./common/Footer";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             <SearchResult></SearchResult>
           </Route>
         </Switch>
+        <Footer></Footer>
       </div>
     </BrowserRouter>
   );
