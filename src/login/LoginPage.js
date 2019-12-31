@@ -1,14 +1,14 @@
 import React from "react";
-import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 
-function RegisterPage() {
+function LoginPage() {
   return (
     <div>
       {/* TODO: create a Header component and put it here instead */}
       <h1>Header</h1>
-      <RegisterForm></RegisterForm>
+      <LoginForm></LoginForm>
     </div>
   );
 }
 
-export default RegisterPage;
+export default LoginPage;
