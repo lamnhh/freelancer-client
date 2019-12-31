@@ -34,22 +34,30 @@ function JobPriceTier({ job: initialJob }) {
   );
 
   return (
-    <form onSubmit={onBuy}>
-      {job.price_list.map(function({ price, description }, idx) {
-        return (
-          <label key={idx} className={idx === tier ? "price-tier active" : "price-tier"}>
-            <input
-              type="radio"
-              name="tier"
-              checked={tier === idx}
-              onChange={() => setTier(idx)}></input>
-            <span>{numeral(price).format("$0,0.00")}</span>
-            <span>{description}</span>
-          </label>
-        );
-      })}
-      <button type="submit">Order</button>
-    </form>
+    <div className="job-tiers">
+      <div
+        className="job-tiers__selector"
+        style={{
+          gridTemplateColumns: `repeat(${job.price_list.length}, 1fr)`
+        }}>
+        {job.price_list.map(function({ price }, idx) {
+          return (
+            <div
+              key={idx}
+              className={"job-tiers__choice" + (tier === idx ? " active" : "")}
+              onClick={() => setTier(idx)}>
+              {numeral(price).format("$0,0.00")}
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ padding: "2rem" }}>
+        <div className="job-tiers__description">{job.price_list[tier].description}</div>
+        <button className="job-tiers__submit" onClick={onBuy}>
+          Continue
+        </button>
+      </div>
+    </div>
   );
 }
 

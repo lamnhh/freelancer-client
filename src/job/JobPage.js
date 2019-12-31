@@ -18,14 +18,9 @@ function JobPage() {
   );
 
   return (
-    <div>
-      <h1>Header</h1>
+    <div className="job-page align-left-right">
+      <JobInfo job={job}></JobInfo>
       <div>
-        <h1>Overview</h1>
-        <JobInfo job={job}></JobInfo>
-      </div>
-      <div>
-        <h1>Price Tier</h1>
         <JobPriceTier job={job}></JobPriceTier>
       </div>
     </div>

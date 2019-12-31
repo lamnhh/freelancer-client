@@ -6,7 +6,7 @@ let emptyJob = {
   type: "",
   username: "",
   fullname: "",
-  price_list: []
+  price_list: [{ price: 0, description: "" }]
 };
 
 export default emptyJob;
