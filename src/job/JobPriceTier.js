@@ -26,7 +26,9 @@ function JobPriceTier({ job: initialJob }) {
           console.log(transaction);
           alert("Ordered successfully");
         })
-        .catch(console.log);
+        .catch(function({ message }) {
+          alert(message);
+        });
     },
     [job.id, tier, job.price_list]
   );
