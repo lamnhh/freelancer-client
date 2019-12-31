@@ -10,13 +10,16 @@ import { request } from "../common/config";
 function CategoryBestSeller({ category }) {
   let [jobList, setJobList] = useState([]);
 
-  useEffect(function() {
-    request("/api/job?typeId=" + category.id)
-      .then(function(jobList) {
-        setJobList(jobList);
-      })
-      .catch(console.log);
-  }, []);
+  useEffect(
+    function() {
+      request("/api/job?typeId=" + category.id)
+        .then(function(jobList) {
+          setJobList(jobList);
+        })
+        .catch(console.log);
+    },
+    [category.id]
+  );
 
   return (
     <div>
