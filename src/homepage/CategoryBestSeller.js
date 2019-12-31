@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { request } from "../common/config";
+import JobCard from "../job-list/JobCard";
 
 /**
  * A slider to show best sellers in a certain category
@@ -26,12 +26,7 @@ function CategoryBestSeller({ category }) {
       <h2>{category.name}</h2>
       <div>
         {jobList.map(function(job) {
-          return (
-            <Link to={"/job/" + job.id} key={job.id}>
-              <h3>{job.name}</h3>
-              <h4>{job.price_list.map(({ price }) => price).join(", ")}</h4>
-            </Link>
-          );
+          return <JobCard key={job.id} job={job}></JobCard>;
         })}
       </div>
     </div>

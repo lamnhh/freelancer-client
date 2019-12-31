@@ -8,6 +8,8 @@ import WalletPage from "./wallet/WalletPage";
 import WalletHistory from "./wallet/WalletHistory";
 import WalletUpdate from "./wallet/WalletUpdate";
 import ChatPage from "./chat/ChatPage";
+import JobListFilteredByCategory from "./job-list/JobListFilteredByCategory";
+import SearchResult from "./job-list/SearchResult";
 
 function App() {
   return (
@@ -45,6 +47,14 @@ function App() {
         </Route>
         <Route path="/chat/:username">
           <ChatPage></ChatPage>
+        </Route>
+
+        <Route path="/job-list/:typeId">
+          <JobListFilteredByCategory></JobListFilteredByCategory>
+        </Route>
+
+        <Route path="/search/:text">
+          <SearchResult></SearchResult>
         </Route>
       </Switch>
     </BrowserRouter>
