@@ -11,10 +11,19 @@ let BACKEND_URL =
  * @param {Boolean} sendJson true/false, whether Content-Type is application/json or not
  */
 function request(url, options, sendJson = true) {
+  options.headers = options.headers || {};
+
+  // Automatically set Content-Type if sendJson is true.
   if (sendJson) {
-    options.headers = options.headers || {};
     options.headers["Content-Type"] = "application/json";
   }
+
+  // Automatically set Authorization header if user is already logged in.
+  if (typeof localStorage !== "undefined" && localStorage.getItem("token")) {
+    let token = localStorage.getItem("token");
+    options.headers["Authorization"] = "Bearer " + token;
+  }
+
   return fetch(BACKEND_URL + url, options)
     .then(function(res) {
       return res.json().then(function(json) {
