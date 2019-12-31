@@ -12,7 +12,7 @@ function WalletUpdate({ action }) {
     function(e) {
       e.preventDefault();
 
-      let amount = e.target.amount.value;
+      let amount = parseInt(e.target.amount.value) * (action === "topup" ? 1 : -1);
       let password = e.target.password.value;
 
       request("/api/wallet", {

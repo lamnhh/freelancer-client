@@ -7,6 +7,7 @@ import JobPage from "./job/JobPage";
 import WalletPage from "./wallet/WalletPage";
 import WalletHistory from "./wallet/WalletHistory";
 import WalletUpdate from "./wallet/WalletUpdate";
+import ChatPage from "./chat/ChatPage";
 
 function App() {
   return (
@@ -18,12 +19,14 @@ function App() {
         <Route path="/login">
           <LoginPage></LoginPage>
         </Route>
+
         <Route path="/" exact>
           <Homepage></Homepage>
         </Route>
         <Route path="/job/:id">
           <JobPage></JobPage>
         </Route>
+
         <Route path="/wallet" exact>
           <WalletPage></WalletPage>
         </Route>
@@ -35,6 +38,13 @@ function App() {
         </Route>
         <Route path="/wallet/withdraw">
           <WalletUpdate action="withdraw"></WalletUpdate>
+        </Route>
+
+        <Route path="/chat" exact>
+          <ChatPage></ChatPage>
+        </Route>
+        <Route path="/chat/:username">
+          <ChatPage></ChatPage>
         </Route>
       </Switch>
     </BrowserRouter>
