@@ -26,9 +26,11 @@ function ChatPage() {
   );
 
   return (
-    <div>
-      <ChatUserList socket={socket}></ChatUserList>
-      <ChatBox socket={socket} receiver={username}></ChatBox>
+    <div className="gray-bg align-left-right">
+      <div className="chat-page">
+        <ChatUserList socket={socket} receiver={username}></ChatUserList>
+        <ChatBox socket={socket} receiver={username}></ChatBox>
+      </div>
     </div>
   );
 }

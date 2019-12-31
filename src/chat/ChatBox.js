@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 
 /**
  * Display chat box between current user and `receiver`.
@@ -6,6 +6,7 @@ import React, { useState, useEffect, useCallback } from "react";
  */
 function ChatBox({ socket, receiver }) {
   let [messageList, setMessageList] = useState([]);
+  let messageBox = useRef();
 
   useEffect(
     function() {
@@ -18,6 +19,7 @@ function ChatBox({ socket, receiver }) {
           return;
         }
         setMessageList((p) => p.concat(messageList));
+        messageBox.current.scrollTop = messageBox.current.scrollHeight;
       }
 
       socket.emit("chat-with", receiver);
@@ -36,19 +38,36 @@ function ChatBox({ socket, receiver }) {
       e.preventDefault();
 
       let content = e.target.content.value;
+      e.target.content.value = "";
       socket.emit("send", receiver, content);
     },
     [socket, receiver]
   );
 
   return (
-    <div>
-      {messageList.map(function(message) {
-        return <p key={message.id}>{message.content}</p>;
-      })}
+    <div className="chat-box">
+      <div
+        ref={messageBox}
+        style={{
+          maxHeight: "70rem",
+          overflowY: "auto"
+        }}>
+        <div className="chat-box__message-list">
+          {messageList.map(function(message) {
+            return (
+              <div key={message.id} className={message.username_from === receiver ? "other" : ""}>
+                <span>{message.content}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <hr></hr>
       <form onSubmit={onSendMessage}>
-        <input type="text" name="content"></input>
-        <button type="submit">Send</button>
+        <input type="text" name="content" placeholder="Type a message..."></input>
+        <button type="submit">
+          <i className="fas fa-paper-plane"></i>
+        </button>
       </form>
     </div>
   );
