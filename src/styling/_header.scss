@@ -67,18 +67,18 @@
 }
 
 .header-actions {
+  align-items: center;
+  display: flex;
   button {
     transition: 0.05s linear all;
     cursor: pointer;
-    &:hover {
-      color: lighten(#1dbf73, 4%);
-      border-color: lighten(#1dbf73, 4%);
-    }
     &:focus {
       outline: none;
     }
   }
   a {
+    display: contents;
+    text-decoration: none;
     &focus,
     &hover {
       outline: none;
@@ -91,6 +91,10 @@
     font-weight: bold;
     font-size: 1.5rem;
     margin-right: 2rem;
+    &:hover {
+      color: lighten(#1dbf73, 4%);
+      border-color: lighten(#1dbf73, 4%);
+    }
   }
   .signup-btn {
     color: #1dbf73;
@@ -100,6 +104,10 @@
     font-weight: bold;
     font-size: 1.5rem;
     padding: 0.8rem 1.6rem;
+    &:hover {
+      color: lighten(#1dbf73, 4%);
+      border-color: lighten(#1dbf73, 4%);
+    }
   }
 }
 
@@ -136,4 +144,78 @@
     list-style: none;
     list-style-image: none;
   }
+}
+
+.header .user-profile-btn {
+  background-color: #b5b6ba;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.6rem;
+  height: 3.2rem;
+  line-height: 1.5;
+  position: relative;
+  text-transform: uppercase;
+  width: 3.2rem;
+}
+
+.header-dropdown {
+  background-color: #fff;
+  border: 0.1rem solid #ddd;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  padding: 1.2rem;
+  right: 0;
+  text-align: left;
+  text-transform: none;
+  top: calc(100% + 1.2rem);
+  position: absolute;
+
+  &:not(.active) {
+    display: none;
+  }
+
+  a {
+    display: contents;
+    text-decoration: none;
+  }
+
+  p {
+    color: #777;
+    margin: 0;
+    width: 10rem;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+  a + a > p {
+    margin-top: 1rem;
+  }
+  p.divider {
+    border-top: 0.1rem solid #ddd;
+    padding-top: 1rem;
+  }
+}
+
+.header-dropdown .tip,
+.header-dropdown .tip::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 10px;
+  top: -1.1rem;
+  left: calc(100% - 1.6rem);
+  border-top-width: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  transform: translateX(-50%);
+}
+
+.header-dropdown .tip::after {
+  top: 0.1rem;
+  border-bottom-color: #fff;
+  left: unset;
 }

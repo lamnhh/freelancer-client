@@ -1,32 +1,42 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import { request } from "../common/config";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import AppContext from "../AppContext";
 
 function RegisterForm() {
-  let onRegister = useCallback(function(e) {
-    e.preventDefault();
+  let history = useHistory();
+  let { setUser } = useContext(AppContext);
 
-    let username = e.target.username.value;
-    let password = e.target.password.value;
-    let email = e.target.email.value;
-    let phone = e.target.phone.value;
+  let onRegister = useCallback(
+    function(e) {
+      e.preventDefault();
 
-    request("/api/account/register", {
-      method: "POST",
-      body: JSON.stringify({
-        username,
-        password,
-        email,
-        phone
+      let username = e.target.username.value;
+      let password = e.target.password.value;
+      let email = e.target.email.value;
+      let phone = e.target.phone.value;
+
+      request("/api/account/register", {
+        method: "POST",
+        body: JSON.stringify({
+          username,
+          password,
+          email,
+          phone
+        })
       })
-    })
-      .then(function(user) {
-        localStorage.setItem("token", user.token);
-      })
-      .catch(function(err) {
-        alert(err.message);
-      });
-  }, []);
+        .then(function(user) {
+          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("token", user.token);
+          setUser(user);
+          history.goBack();
+        })
+        .catch(function(err) {
+          alert(err.message);
+        });
+    },
+    [setUser, history]
+  );
 
   return (
     <div className="login-form-wrapper">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RegisterPage from "./register/RegisterPage";
 import LoginPage from "./login/LoginPage";
@@ -12,58 +12,78 @@ import JobListFilteredByCategory from "./job-list/JobListFilteredByCategory";
 import SearchResult from "./job-list/SearchResult";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
+import AppContext from "./AppContext";
 
 function App() {
+  // user === null <=> User has not logged in.
+  // Otherwise, user contains information of the current user.
+  let [user, setUser] = useState(null);
+
+  // Upon start, read user information from localStorage to initialise.
+  useEffect(function() {
+    if (!!!localStorage.getItem("user")) {
+      return;
+    }
+    let user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+  }, []);
+
   return (
-    <BrowserRouter>
-      <div>
-        <Header></Header>
-        <Switch>
-          <Route path="/register">
-            <RegisterPage></RegisterPage>
-          </Route>
-          <Route path="/login">
-            <LoginPage></LoginPage>
-          </Route>
+    <AppContext.Provider
+      value={{
+        user,
+        setUser
+      }}>
+      <BrowserRouter>
+        <div>
+          <Header></Header>
+          <Switch>
+            <Route path="/register">
+              <RegisterPage></RegisterPage>
+            </Route>
+            <Route path="/login">
+              <LoginPage></LoginPage>
+            </Route>
 
-          <Route path="/" exact>
-            <Homepage></Homepage>
-          </Route>
-          <Route path="/job/:id">
-            <JobPage></JobPage>
-          </Route>
+            <Route path="/" exact>
+              <Homepage></Homepage>
+            </Route>
+            <Route path="/job/:id">
+              <JobPage></JobPage>
+            </Route>
 
-          <Route path="/wallet" exact>
-            <WalletPage></WalletPage>
-          </Route>
-          <Route path="/wallet/history">
-            <WalletHistory></WalletHistory>
-          </Route>
-          <Route path="/wallet/topup">
-            <WalletUpdate action="topup"></WalletUpdate>
-          </Route>
-          <Route path="/wallet/withdraw">
-            <WalletUpdate action="withdraw"></WalletUpdate>
-          </Route>
+            <Route path="/wallet" exact>
+              <WalletPage></WalletPage>
+            </Route>
+            <Route path="/wallet/history">
+              <WalletHistory></WalletHistory>
+            </Route>
+            <Route path="/wallet/topup">
+              <WalletUpdate action="topup"></WalletUpdate>
+            </Route>
+            <Route path="/wallet/withdraw">
+              <WalletUpdate action="withdraw"></WalletUpdate>
+            </Route>
 
-          <Route path="/chat" exact>
-            <ChatPage></ChatPage>
-          </Route>
-          <Route path="/chat/:username">
-            <ChatPage></ChatPage>
-          </Route>
+            <Route path="/chat" exact>
+              <ChatPage></ChatPage>
+            </Route>
+            <Route path="/chat/:username">
+              <ChatPage></ChatPage>
+            </Route>
 
-          <Route path="/job-list/:typeId">
-            <JobListFilteredByCategory></JobListFilteredByCategory>
-          </Route>
+            <Route path="/job-list/:typeId">
+              <JobListFilteredByCategory></JobListFilteredByCategory>
+            </Route>
 
-          <Route path="/search/:text">
-            <SearchResult></SearchResult>
-          </Route>
-        </Switch>
-        <Footer></Footer>
-      </div>
-    </BrowserRouter>
+            <Route path="/search/:text">
+              <SearchResult></SearchResult>
+            </Route>
+          </Switch>
+          <Footer></Footer>
+        </div>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 

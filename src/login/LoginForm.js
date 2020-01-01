@@ -1,25 +1,35 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import { request } from "../common/config";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import AppContext from "../AppContext";
 
 function LoginForm() {
-  let onLogin = useCallback(function(e) {
-    e.preventDefault();
+  let history = useHistory();
+  let { setUser } = useContext(AppContext);
 
-    let username = e.target.username.value;
-    let password = e.target.password.value;
+  let onLogin = useCallback(
+    function(e) {
+      e.preventDefault();
 
-    request("/api/account/login", {
-      method: "POST",
-      body: JSON.stringify({ username, password })
-    })
-      .then(function(user) {
-        localStorage.setItem("token", user.token);
+      let username = e.target.username.value;
+      let password = e.target.password.value;
+
+      request("/api/account/login", {
+        method: "POST",
+        body: JSON.stringify({ username, password })
       })
-      .catch(function(err) {
-        alert(err.message);
-      });
-  }, []);
+        .then(function(user) {
+          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("token", user.token);
+          setUser(user);
+          history.goBack();
+        })
+        .catch(function(err) {
+          alert(err.message);
+        });
+    },
+    [setUser, history]
+  );
 
   return (
     <div className="login-form-wrapper">

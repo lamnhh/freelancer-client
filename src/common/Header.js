@@ -1,6 +1,8 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { request } from "./config";
+import AppContext from "../AppContext";
+import HeaderDropdown from "./HeaderDropdown";
 
 function Header() {
   let [categoryList, setCategoryList] = useState([]);
@@ -11,6 +13,7 @@ function Header() {
   }, []);
 
   let history = useHistory();
+  let { user } = useContext(AppContext);
 
   let onSearch = useCallback(
     function(e) {
@@ -37,21 +40,34 @@ function Header() {
           </form>
         </div>
         <div className="header-actions">
-          {/* <Link to="/upload-job">
-            <button type="button" className="signin-btn">
-              Upload Job
-            </button>
-          </Link> */}
-          <Link to="/login">
-            <button type="button" className="signin-btn">
-              Sign In
-            </button>
-          </Link>
-          <Link to="/register">
-            <button type="button" className="signup-btn">
-              Join
-            </button>
-          </Link>
+          {!!user ? (
+            <React.Fragment>
+              <Link to="/upload-job">
+                <button type="button" className="signin-btn">
+                  Upload Job
+                </button>
+              </Link>
+              <Link to="/chat">
+                <button type="button" className="signin-btn">
+                  Messages
+                </button>
+              </Link>
+              <HeaderDropdown user={user}></HeaderDropdown>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Link to="/login">
+                <button type="button" className="signin-btn">
+                  Sign In
+                </button>
+              </Link>
+              <Link to="/register">
+                <button type="button" className="signup-btn">
+                  Join
+                </button>
+              </Link>
+            </React.Fragment>
+          )}
         </div>
       </div>
       <hr></hr>
