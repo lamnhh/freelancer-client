@@ -12,9 +12,9 @@ function UploadJob() {
         method: "POST",
         body: JSON.stringify(job)
       })
-        .then(function() {
+        .then(function(job) {
           alert("Upload successfully");
-          history.push("/");
+          history.push("/job/" + job.id);
         })
         .catch(function({ message }) {
           alert(message);

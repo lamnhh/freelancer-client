@@ -22,6 +22,14 @@ function JobForm({ initialJob, handleSubmit }) {
       .catch(console.log);
   }, []);
 
+  let [type_id, setTypeId] = useState(job.type_id);
+  useEffect(
+    function() {
+      setTypeId(job.type_id);
+    },
+    [job.type_id]
+  );
+
   let onSubmit = useCallback(
     function(e) {
       e.preventDefault();
@@ -34,7 +42,6 @@ function JobForm({ initialJob, handleSubmit }) {
       let name = e.target.name.value;
       let description = e.target.description.value;
       let cv_url = e.target.cv_url.value;
-      let type_id = parseInt(e.target.type_id.value);
 
       let job = {
         name,
@@ -45,7 +52,7 @@ function JobForm({ initialJob, handleSubmit }) {
       };
       handleSubmit(job);
     },
-    [priceList]
+    [priceList, handleSubmit, type_id]
   );
 
   return (
@@ -64,7 +71,10 @@ function JobForm({ initialJob, handleSubmit }) {
           </label>
           <label>
             <h3>Category</h3>
-            <select defaultValue={job.type_id} name="type_id">
+            <select
+              value={type_id}
+              onChange={(e) => setTypeId(parseInt(e.target.value))}
+              name="type_id">
               {categoryList.map(function(category) {
                 return (
                   <option key={category.id} value={category.id}>
@@ -99,7 +109,12 @@ function JobForm({ initialJob, handleSubmit }) {
           <h3 className="section-subtitle">
             Please put them in a single zip file and put the URL to that file here.
           </h3>
-          <input type="text" name="cv_url" placeholder="URL to the zip file" required></input>
+          <input
+            type="text"
+            name="cv_url"
+            placeholder="URL to the zip file"
+            defaultValue={job.cv_url}
+            required></input>
         </section>
 
         <section className="publish">

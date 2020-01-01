@@ -14,6 +14,7 @@ import AppContext from "./AppContext";
 import UserProfile from "./user-profile/UserProfile";
 import Logout from "./common/Logout";
 import UploadJob from "./job-form/UploadJob";
+import UpdateJob from "./job-form/UpdateJob";
 
 function App() {
   // user === null <=> User has not logged in.
@@ -82,6 +83,9 @@ function App() {
 
             <Route path="/upload-job">
               <UploadJob></UploadJob>
+            </Route>
+            <Route path="/update-job/:id">
+              <UpdateJob></UpdateJob>
             </Route>
           </Switch>
           <Footer></Footer>
