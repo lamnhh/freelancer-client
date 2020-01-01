@@ -13,6 +13,8 @@ import SearchResult from "./job-list/SearchResult";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
 import AppContext from "./AppContext";
+import UserProfile from "./user-profile/UserProfile";
+import Logout from "./common/Logout";
 
 function App() {
   // user === null <=> User has not logged in.
@@ -78,6 +80,14 @@ function App() {
 
             <Route path="/search/:text">
               <SearchResult></SearchResult>
+            </Route>
+
+            <Route path="/user-profile">
+              <UserProfile></UserProfile>
+            </Route>
+
+            <Route path="/logout">
+              <Logout></Logout>
             </Route>
           </Switch>
           <Footer></Footer>
