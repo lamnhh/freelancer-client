@@ -6,13 +6,16 @@ import numeral from "numeral";
  * @param {{price: Number, description: String}} props
  */
 function PricingItem({ price, description, setPriceList }) {
-  let onRemoveTier = useCallback(function() {
-    setPriceList((p) =>
-      p.filter(function(tier) {
-        return price !== tier.price;
-      })
-    );
-  }, []);
+  let onRemoveTier = useCallback(
+    function() {
+      setPriceList((p) =>
+        p.filter(function(tier) {
+          return price !== tier.price;
+        })
+      );
+    },
+    [price, setPriceList]
+  );
 
   return (
     <div className="pricing-item">

@@ -7,7 +7,7 @@ import Pricing from "./Pricing";
  * @param {{initialJob: { name: String, description: String, cv_url: String, type_id: Number, price_list: Array.<{price: Number, description: String}>}}} props
  */
 function JobForm({ initialJob, handleSubmit }) {
-  let [job, setJob] = useState({
+  let [job] = useState({
     name: initialJob.name,
     description: initialJob.description,
     cv_url: initialJob.cv_url,
@@ -22,10 +22,31 @@ function JobForm({ initialJob, handleSubmit }) {
       .catch(console.log);
   }, []);
 
-  let onSubmit = useCallback(function(e) {
-    e.preventDefault();
-    handleSubmit({});
-  }, []);
+  let onSubmit = useCallback(
+    function(e) {
+      e.preventDefault();
+
+      if (priceList.length === 0) {
+        alert("Please create at least 1 price tier");
+        return;
+      }
+
+      let name = e.target.name.value;
+      let description = e.target.description.value;
+      let cv_url = e.target.cv_url.value;
+      let type_id = parseInt(e.target.type_id.value);
+
+      let job = {
+        name,
+        description,
+        cv_url,
+        type_id,
+        price_list: priceList
+      };
+      handleSubmit(job);
+    },
+    [priceList]
+  );
 
   return (
     <div className="job-form--wrapper align-left-right">
@@ -45,7 +66,11 @@ function JobForm({ initialJob, handleSubmit }) {
             <h3>Category</h3>
             <select defaultValue={job.type_id} name="type_id">
               {categoryList.map(function(category) {
-                return <option key={category.id}>{category.name}</option>;
+                return (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                );
               })}
             </select>
           </label>

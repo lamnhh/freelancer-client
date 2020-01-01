@@ -16,8 +16,10 @@ function Pricing({ priceList, setPriceList }) {
           return a - b;
         })
       );
+      setPrice(0);
+      setDescription("");
     },
-    [price, description]
+    [price, description, setPriceList]
   );
 
   return (
@@ -35,18 +37,14 @@ function Pricing({ priceList, setPriceList }) {
         <div className="pricing-item">
           <input
             type="text"
-            name="price"
             placeholder="Price"
             value={price}
-            onChange={(e) => setPrice(parseInt(e.target.value) || 0)}
-            required></input>
+            onChange={(e) => setPrice(parseInt(e.target.value) || 0)}></input>
           <input
             type="text"
-            name="description"
             placeholder="Description"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required></input>
+            onChange={(e) => setDescription(e.target.value)}></input>
         </div>
         <div style={{ textAlign: "right", marginTop: "2rem" }}>
           <button type="button" className="publish-btn" onClick={onAddTier}>
