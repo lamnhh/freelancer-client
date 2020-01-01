@@ -5,7 +5,6 @@ import LoginPage from "./login/LoginPage";
 import Homepage from "./homepage/Homepage";
 import JobPage from "./job/JobPage";
 import WalletPage from "./wallet/WalletPage";
-import WalletHistory from "./wallet/WalletHistory";
 import WalletUpdate from "./wallet/WalletUpdate";
 import ChatPage from "./chat/ChatPage";
 import JobListFilteredByCategory from "./job-list/JobListFilteredByCategory";
@@ -56,9 +55,6 @@ function App() {
 
             <Route path="/wallet" exact>
               <WalletPage></WalletPage>
-            </Route>
-            <Route path="/wallet/history">
-              <WalletHistory></WalletHistory>
             </Route>
             <Route path="/wallet/topup">
               <WalletUpdate action="topup"></WalletUpdate>

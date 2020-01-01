@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import numeral from "numeral";
 import { request } from "../common/config";
+import RecentActivityItem from "./RecentActivityItem";
 
-function WalletHistory() {
+function RecentActivity() {
   let [transactionList, setTransactionList] = useState([]);
-
   useEffect(function() {
     request("/api/wallet/history")
       .then(setTransactionList)
@@ -12,19 +11,12 @@ function WalletHistory() {
   }, []);
 
   return (
-    <div>
-      <h1>Header</h1>
-      <h2>Transaction History</h2>
+    <div className="recent-activity">
       {transactionList.map(function(transaction) {
-        return (
-          <div key={transaction.id}>
-            <h3>{numeral(transaction.amount).format("$0,0.00")}</h3>
-            <h3>{transaction.content}</h3>
-          </div>
-        );
+        return <RecentActivityItem transaction={transaction}></RecentActivityItem>;
       })}
     </div>
   );
 }
 
-export default WalletHistory;
+export default RecentActivity;

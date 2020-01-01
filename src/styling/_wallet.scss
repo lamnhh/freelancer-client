@@ -1,0 +1,95 @@
+.wallet-page {
+  padding-top: 4rem;
+  width: 60rem;
+}
+
+.wallet-page--wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.wallet-page .balance-title {
+  font-size: 2.4rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.wallet-page .balance-value {
+  font-size: 4rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  font-weight: normal;
+}
+
+.wallet-page .balance-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  a {
+    display: contents;
+    text-decoration: none;
+  }
+  a + a > button {
+    margin-left: 4rem;
+  }
+  button {
+    align-items: center;
+    background: transparent;
+    border: 0.1rem solid #ddd;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    height: 12rem;
+    justify-content: center;
+    width: 12rem;
+    &:hover {
+      border: 0.1rem solid #1dbf73;
+      box-shadow: 0 0 0.4rem #1dbf73;
+    }
+  }
+  img {
+    display: block;
+    height: 4.8rem;
+    width: 4.8rem;
+    margin-bottom: 1rem;
+  }
+  span {
+    display: block;
+  }
+}
+
+.wallet-page .recent-activity {
+  border: 0.1rem #ddd solid;
+  box-shadow: 0 0 0.4rem #ddd;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+
+.wallet-page .recent-activity__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.6rem;
+  h4,
+  h5 {
+    font-weight: normal;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 1.6rem;
+  }
+
+  h5 {
+    color: #777;
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-top: 0.8rem;
+  }
+}
+
+.wallet-page .recent-activity__item + .recent-activity__item {
+  border-top: 0.1rem solid #ddd;
+}
