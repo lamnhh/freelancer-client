@@ -4,11 +4,14 @@ import AppContext from "../AppContext";
 
 function Logout() {
   let { setUser } = useContext(AppContext);
-  useEffect(function() {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    setUser(null);
-  }, []);
+  useEffect(
+    function() {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      setUser(null);
+    },
+    [setUser]
+  );
   return <Redirect to="/"></Redirect>;
 }
 
