@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 /**
  * Display list of users that have chatted with the current user.
@@ -7,11 +7,15 @@ import { Link } from "react-router-dom";
  */
 function ChatUserList({ socket, receiver }) {
   let [userList, setUserList] = useState([]);
+  let history = useHistory();
 
   useEffect(
     function() {
       function onReceiveUserList(userList) {
         setUserList(userList);
+        if (userList.length > 0 && !receiver) {
+          history.push("/chat/" + userList[0].username);
+        }
       }
 
       socket.on("user-list", onReceiveUserList);
@@ -20,7 +24,7 @@ function ChatUserList({ socket, receiver }) {
         socket.off("user-list", onReceiveUserList);
       };
     },
-    [socket]
+    [socket, history, receiver]
   );
 
   return (

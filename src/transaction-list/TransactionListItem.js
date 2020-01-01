@@ -3,7 +3,7 @@ import moment from "moment";
 import numeral from "numeral";
 import { Link } from "react-router-dom";
 
-function TransactionListItem({ transaction }) {
+function TransactionListItem({ transaction, isMine }) {
   return (
     <div className="transaction-list-item">
       <span>
@@ -21,7 +21,7 @@ function TransactionListItem({ transaction }) {
       <span className="price">{numeral(transaction.price).format("$0,0.00")}</span>
       <span className="action">
         <Link to={"/chat/" + transaction.seller.username}>
-          <button>Contact</button>
+          <button title="Contact">Message</button>
         </Link>
       </span>
     </div>

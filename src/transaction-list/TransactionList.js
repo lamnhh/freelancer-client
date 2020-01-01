@@ -35,12 +35,12 @@ function TransactionList({ url }) {
         <div
           className={"transaction-list-tab" + (tab === 0 ? " active" : "")}
           onClick={() => setTab(0)}>
-          My Transactions
+          My orders
         </div>
         <div
           className={"transaction-list-tab" + (tab === 1 ? " active" : "")}
           onClick={() => setTab(1)}>
-          Transactions to Me
+          Orders to me
         </div>
       </div>
       <div className="transaction-list-item">
@@ -48,11 +48,14 @@ function TransactionList({ url }) {
         <span></span>
         <span>ORDER DATE</span>
         <span>TOTAL</span>
-        <span>ACTION</span>
+        <span>ACTIONS</span>
       </div>
       {shownList.map(function(transaction) {
         return (
-          <TransactionListItem key={transaction.id} transaction={transaction}></TransactionListItem>
+          <TransactionListItem
+            key={transaction.id}
+            isMine={tab === 0}
+            transaction={transaction}></TransactionListItem>
         );
       })}
     </div>

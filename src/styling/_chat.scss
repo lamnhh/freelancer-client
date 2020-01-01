@@ -2,8 +2,7 @@
   background: #fff;
   border: 0.1rem solid #e7e7e7;
   display: grid;
-  grid-template-columns: 3fr 8fr;
-  margin-top: 3rem;
+  grid-template-columns: 3fr 8fr 4fr;
   width: 100%;
 }
 
@@ -103,4 +102,58 @@
   color: rgb(0, 95, 255);
   cursor: pointer;
   font-size: 2.4rem;
+}
+
+.chat-info {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  border-left: 0.1rem solid #ddd;
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+}
+
+.chat-info__transaction {
+  display: grid;
+  grid-template-columns: 4fr 2fr 1fr;
+  padding: 0.8rem 1.6rem;
+  span,
+  h3 {
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 1.5;
+    margin: 0;
+  }
+  button {
+    background-color: #1dbf73;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.chat-info__transaction + .chat-info__transaction {
+  border-top: 0.1rem solid #ddd;
+}
+
+.chat-info__transaction.table-header {
+  span {
+    font-weight: 500;
+  }
+  span:last-child {
+    text-align: center;
+  }
+}
+
+.chat-info__transaction--wrapper {
+  border: 0.1rem solid #ddd;
+  padding: 0;
 }
