@@ -31,13 +31,19 @@ function WalletUpdate({ action }) {
   );
 
   return (
-    <div>
-      <h1>Header</h1>
+    <div className="login-form wallet-form">
       <h2>{actionName}</h2>
       <form onSubmit={onUpdate}>
-        <input type="text" name="amount" placeholder="Amount"></input>
-        <input type="password" name="password" placeholder="Password"></input>
-        <button type="submit">{actionName}</button>
+        <label className="amount-label">
+          <span>Amount</span>
+          <input type="text" name="amount" placeholder="$"></input>
+        </label>
+
+        <label className="amount-label">
+          <span>Password</span>
+          <input type="password" name="password" placeholder="Enter password to continue"></input>
+        </label>
+        <button type="submit">Continue</button>
       </form>
     </div>
   );

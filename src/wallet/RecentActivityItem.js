@@ -16,7 +16,7 @@ function RecentActivityItem({ transaction }) {
     <div className="recent-activity__item">
       <div>
         <h4>{content}</h4>
-        <h5>{moment(transaction.created_at).format("dddd, MMMM Do YYYY, hh:mm")}</h5>
+        <h5>{moment(transaction.created_at).format("dddd, MMMM Do YYYY, HH:mm")}</h5>
       </div>
       <h4>{numeral(transaction.amount).format("$ 0,0.00")}</h4>
     </div>

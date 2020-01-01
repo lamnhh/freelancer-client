@@ -13,7 +13,9 @@ function RecentActivity() {
   return (
     <div className="recent-activity">
       {transactionList.map(function(transaction) {
-        return <RecentActivityItem transaction={transaction}></RecentActivityItem>;
+        return (
+          <RecentActivityItem key={transaction.id} transaction={transaction}></RecentActivityItem>
+        );
       })}
     </div>
   );

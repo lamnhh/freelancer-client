@@ -30,7 +30,7 @@
     display: contents;
     text-decoration: none;
   }
-  a + a > button {
+  button + button {
     margin-left: 4rem;
   }
   button {
@@ -47,6 +47,9 @@
     &:hover {
       border: 0.1rem solid #1dbf73;
       box-shadow: 0 0 0.4rem #1dbf73;
+    }
+    &:focus {
+      outline: none;
     }
   }
   img {
@@ -68,6 +71,7 @@
 }
 
 .wallet-page .recent-activity__item {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 1.6rem;
@@ -92,4 +96,33 @@
 
 .wallet-page .recent-activity__item + .recent-activity__item {
   border-top: 0.1rem solid #ddd;
+}
+
+.wallet-form {
+  padding-bottom: 2rem;
+  .amount-label {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 1rem;
+    span {
+      align-items: center;
+      color: #777;
+      display: flex;
+      font-size: 1.8rem;
+      line-height: 1.5;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: 3.2rem;
+    line-height: 1.5;
+    margin: 0;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
 }
