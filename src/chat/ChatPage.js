@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { BACKEND_URL } from "../common/config";
 import ChatUserList from "./ChatUserList";
 import ChatBox from "./ChatBox";
+import ChatInfo from "./ChatInfo";
 
 function ChatPage() {
   let [socket] = useState(
@@ -26,10 +27,11 @@ function ChatPage() {
   );
 
   return (
-    <div className="gray-bg align-left-right">
+    <div className="gray-bg">
       <div className="chat-page">
         <ChatUserList socket={socket} receiver={username}></ChatUserList>
         <ChatBox socket={socket} receiver={username}></ChatBox>
+        <ChatInfo seller={username}></ChatInfo>
       </div>
     </div>
   );
