@@ -10,7 +10,7 @@ let BACKEND_URL =
  * @param {RequestInit} options
  * @param {Boolean} sendJson true/false, whether Content-Type is application/json or not
  */
-function request(url, options, sendJson = true) {
+function request(url, options = {}, sendJson = true) {
   options.headers = options.headers || {};
 
   // Automatically set Content-Type if sendJson is true.

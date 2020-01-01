@@ -3,10 +3,10 @@ import RegisterForm from "./RegisterForm";
 
 function RegisterPage() {
   return (
-    <div>
-      {/* TODO: create a Header component and put it here instead */}
-      <h1>Header</h1>
-      <RegisterForm></RegisterForm>
+    <div className="gray-bg">
+      <div className="login-card">
+        <RegisterForm></RegisterForm>
+      </div>
     </div>
   );
 }

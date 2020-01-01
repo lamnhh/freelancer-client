@@ -1,0 +1,62 @@
+.job-page {
+  display: grid;
+  grid-template-columns: 6fr 3fr;
+  margin-top: 4rem;
+}
+
+.job-page .job-name {
+  font-size: 2.4rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.job-page .job-card__uploader {
+  padding-left: 0;
+}
+
+.job-page .job-description {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.job-tiers {
+  border: 0.1rem solid #ddd;
+}
+
+.job-tiers__selector {
+  display: grid;
+  border-bottom: 0.1rem solid #ddd;
+}
+
+.job-tiers__choice {
+  cursor: pointer;
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.2rem;
+  &.active {
+    color: #1fd0b6;
+    border-bottom: 0.3rem solid #1fd0b6;
+  }
+}
+
+.job-tiers__choice + .job-tiers__choice {
+  border-left: 0.1rem solid #ddd;
+}
+
+.job-tiers__description {
+  font-size: 1.6rem;
+}
+
+.job-tiers__submit {
+  background-color: #222;
+  border: none;
+  border-radius: 0.4rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 3rem;
+  padding: 1.2rem;
+  width: 100%;
+}

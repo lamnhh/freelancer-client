@@ -1,0 +1,99 @@
+.login-card {
+  background-color: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  margin-top: 6rem;
+  overflow: hidden;
+  text-align: center;
+  width: 42rem;
+  h1 {
+    font-size: 3.2rem;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+.login-form {
+  padding: 2rem 4rem 0 4rem;
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    border-radius: 0.7rem;
+    border: 0.1rem solid #ccc;
+    padding: 1rem 1.5rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    width: 100%;
+    &:focus {
+      box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.4) inset;
+      outline: none;
+    }
+  }
+  label + label {
+    margin-top: 1.6rem;
+  }
+  button {
+    background-color: #1dbf73;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    width: 100%;
+    transition: 0.05s linear all;
+    &:hover {
+      background-color: #3fca89;
+    }
+  }
+}
+
+.login-options {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  a {
+    color: #1dbf73;
+    font-size: 1.3rem;
+    text-decoration: none;
+    &:hover {
+      color: #3fca89;
+    }
+  }
+}
+
+.login-checkbox {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  span {
+    color: #62646a;
+    font-size: 1.3rem;
+  }
+}
+
+.login-form-wrapper hr {
+  border: none;
+  border-top: 0.1rem solid #ddd;
+  margin: 0;
+}
+
+.login-form-text {
+  color: #62646a;
+  display: block;
+  font-size: 1.4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  &.small {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+  a {
+    color: #1dbf73;
+    text-decoration: none;
+    &:hover {
+      color: #3fca89;
+    }
+  }
+}

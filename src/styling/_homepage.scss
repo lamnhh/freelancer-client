@@ -1,0 +1,45 @@
+.homepage-category {
+  margin-top: 6rem;
+  &__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    a {
+      color: #28ccb7;
+      font-size: 1.6rem;
+      list-style: 1.5;
+      text-decoration: none;
+      transition: 0.08s linear color;
+      &:hover {
+        color: lighten(#28ccb7, 10%);
+      }
+    }
+  }
+  &__name {
+    font-size: 2.4rem;
+    line-height: 1.5;
+  }
+}
+
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+  a {
+    display: block;
+  }
+}
+
+.homepage-cover {
+  position: relative;
+  h1 {
+    width: 70%;
+    color: #fff;
+    font-size: 4rem;
+    font-weight: normal;
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    transform: translateY(-90%);
+  }
+}

@@ -1,0 +1,221 @@
+.header {
+  hr {
+    margin: 0;
+    border: none;
+    border-top: 0.1rem solid #ddd;
+  }
+}
+
+.header-top {
+  padding-top: 2.3rem;
+  padding-bottom: 2.3rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-logo-search {
+  align-items: center;
+  display: flex;
+  img {
+    margin-right: 4rem;
+  }
+}
+
+.header-search {
+  position: relative;
+  input {
+    border-radius: 0.3rem 0 0 0.3rem;
+    border: 0.1rem solid #ddd;
+    border-right-width: 0;
+    color: #7a7d85;
+    font-size: 1.5rem;
+    padding: 0.7rem 0.7rem 0.7rem 2.8rem;
+    width: 40rem;
+    &:focus {
+      border-color: rgb(153, 153, 153);
+      color: #222325;
+      outline: none;
+    }
+  }
+  button {
+    background-color: #1dbf73;
+    border: none;
+    border-radius: 0 0.3rem 0.3rem 0;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+    transition: 0.05s linear background-color;
+    &:hover {
+      background-color: lighten(#1dbf73, 4%);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &::after {
+    font: 16px FontAwesome;
+    content: "\F002";
+    color: #999;
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 8px;
+  }
+}
+
+.header-actions {
+  align-items: center;
+  display: flex;
+  button {
+    transition: 0.05s linear all;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  a {
+    display: contents;
+    text-decoration: none;
+    &focus,
+    &hover {
+      outline: none;
+    }
+  }
+  .signin-btn {
+    background: transparent;
+    border: none;
+    color: #7a7d85;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 2rem;
+    &:hover {
+      color: lighten(#1dbf73, 4%);
+      border-color: lighten(#1dbf73, 4%);
+    }
+  }
+  .signup-btn {
+    color: #1dbf73;
+    background: transparent;
+    border-radius: 0.4rem;
+    border: 0.1rem solid #1dbf73;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0.8rem 1.6rem;
+    &:hover {
+      color: lighten(#1dbf73, 4%);
+      border-color: lighten(#1dbf73, 4%);
+    }
+  }
+}
+
+.header {
+  .category-list {
+    align-items: center;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  .category-list__name {
+    margin-right: 6rem;
+    position: relative;
+    a {
+      color: #62646a;
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      padding: 0.8rem 0;
+      text-decoration: none;
+    }
+  }
+
+  .category-list__name:hover a::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #1dbf73;
+  }
+  li {
+    list-style: none;
+    list-style-image: none;
+  }
+}
+
+.header .user-profile-btn {
+  background-color: #b5b6ba;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.6rem;
+  height: 3.2rem;
+  line-height: 1.5;
+  position: relative;
+  text-transform: uppercase;
+  width: 3.2rem;
+}
+
+.header-dropdown {
+  background-color: #fff;
+  border: 0.1rem solid #ddd;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  padding: 1.2rem;
+  right: 0;
+  text-align: left;
+  text-transform: none;
+  top: calc(100% + 1.2rem);
+  position: absolute;
+
+  &:not(.active) {
+    display: none;
+  }
+
+  a {
+    display: contents;
+    text-decoration: none;
+  }
+
+  p {
+    color: #777;
+    margin: 0;
+    width: 10rem;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+  a + a > p {
+    margin-top: 1rem;
+  }
+  p.divider {
+    border-top: 0.1rem solid #ddd;
+    padding-top: 1rem;
+  }
+}
+
+.header-dropdown .tip,
+.header-dropdown .tip::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 10px;
+  top: -1.1rem;
+  left: calc(100% - 1.6rem);
+  border-top-width: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  transform: translateX(-50%);
+}
+
+.header-dropdown .tip::after {
+  top: 0.1rem;
+  border-bottom-color: #fff;
+  left: unset;
+}
