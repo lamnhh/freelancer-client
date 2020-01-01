@@ -5,6 +5,7 @@
 }
 
 .job-form {
+  background-color: #fff;
   border: 0.2rem solid #ddd;
   width: 70rem;
 }
@@ -105,8 +106,7 @@
   cursor: pointer;
   font-size: 1.6rem;
   font-weight: bold;
-  padding: 1rem;
-  width: 12rem;
+  padding: 1rem 3rem;
   &--wrapper {
     text-align: right;
   }
@@ -115,5 +115,61 @@
   }
   &:hover {
     background: lighten(#1dbf73, 5%);
+  }
+}
+
+.pricing-item {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr);
+  margin-bottom: 1rem;
+  h3 {
+    font-size: 1.6rem;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__remove-btn {
+    background-color: transparent;
+    height: 4rem;
+    width: 4rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 2rem;
+    color: #666;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    transition: 0.05s linear all;
+    &:hover {
+      background-color: #ddd;
+      color: #222;
+    }
+  }
+}
+
+.pricing-form {
+  input {
+    border: 0.1rem solid #ddd;
+    color: #555;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    &:focus {
+      border: 0.1rem solid #1dbf73 !important;
+      box-shadow: 0 0 0.1rem #1dbf73;
+      outline: none;
+    }
+  }
+  input[name="price"] {
+    text-align: center;
+    border-right: none;
   }
 }
