@@ -1,0 +1,119 @@
+.job-form--wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0 6rem 0;
+}
+
+.job-form {
+  border: 0.2rem solid #ddd;
+  width: 70rem;
+}
+
+.job-form section {
+  padding: 2rem 2.4rem;
+  & + section {
+    border-top: 0.1rem solid #ddd;
+  }
+}
+
+.job-form .section-title {
+  font-size: 2.4rem;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 1.6rem;
+}
+
+.job-form .section-subtitle {
+  color: #444;
+  font-size: 1.6rem;
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.job-form .overview label {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  h3 {
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: normal;
+    padding-top: 0.8rem;
+    margin: 0;
+  }
+  input {
+    font-size: 1.6rem;
+    padding: 0.8rem 0.7rem;
+  }
+  & + label {
+    margin-top: 1rem;
+  }
+  select {
+    background: transparent;
+    font-size: 1.6rem;
+    padding: 0.8rem 0.4rem;
+  }
+
+  input,
+  select {
+    border: 0.1rem solid #ddd;
+    &:focus {
+      border: 0.1rem solid #1dbf73;
+      box-shadow: 0 0 0.1rem #1dbf73;
+      outline: none;
+    }
+  }
+}
+
+.job-form .description {
+  textarea {
+    height: 24rem;
+    resize: none;
+    width: 100%;
+    border: 0.1rem solid #ddd;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    &:focus {
+      border: 0.1rem solid #1dbf73;
+      box-shadow: 0 0 0.1rem #1dbf73;
+      outline: none;
+    }
+  }
+}
+
+.job-form .certification {
+  input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    border: 0.1rem solid #ddd;
+    &:focus {
+      border: 0.1rem solid #1dbf73;
+      box-shadow: 0 0 0.1rem #1dbf73;
+      outline: none;
+    }
+  }
+}
+
+.job-form .publish-btn {
+  background: #1dbf73;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 1rem;
+  width: 12rem;
+  &--wrapper {
+    text-align: right;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background: lighten(#1dbf73, 5%);
+  }
+}

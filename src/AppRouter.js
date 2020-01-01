@@ -13,6 +13,7 @@ import Footer from "./common/Footer";
 import AppContext from "./AppContext";
 import UserProfile from "./user-profile/UserProfile";
 import Logout from "./common/Logout";
+import UploadJob from "./job-form/UploadJob";
 
 function App() {
   // user === null <=> User has not logged in.
@@ -77,6 +78,10 @@ function App() {
 
             <Route path="/logout">
               <Logout></Logout>
+            </Route>
+
+            <Route path="/upload-job">
+              <UploadJob></UploadJob>
             </Route>
           </Switch>
           <Footer></Footer>
