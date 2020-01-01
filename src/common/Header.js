@@ -52,6 +52,11 @@ function Header() {
                   Messages
                 </button>
               </Link>
+              <Link to="/ongoing">
+                <button type="button" className="signin-btn">
+                  Ongoing
+                </button>
+              </Link>
               <HeaderDropdown user={user}></HeaderDropdown>
             </React.Fragment>
           ) : (

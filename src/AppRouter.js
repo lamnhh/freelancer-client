@@ -15,6 +15,7 @@ import UserProfile from "./user-profile/UserProfile";
 import Logout from "./common/Logout";
 import UploadJob from "./job-form/UploadJob";
 import UpdateJob from "./job-form/UpdateJob";
+import OngoingTransactionList from "./transaction-list/OngoingTransactionList";
 
 function App() {
   // user === null <=> User has not logged in.
@@ -86,6 +87,10 @@ function App() {
             </Route>
             <Route path="/update-job/:id">
               <UpdateJob></UpdateJob>
+            </Route>
+
+            <Route path="/ongoing">
+              <OngoingTransactionList></OngoingTransactionList>
             </Route>
           </Switch>
           <Footer></Footer>

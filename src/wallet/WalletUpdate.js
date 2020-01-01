@@ -22,12 +22,12 @@ function WalletUpdate({ action }) {
           password
         })
       })
-        .then(function({ balance }) {
-          alert(balance);
+        .then(function() {
+          alert(actionName + " successfully");
         })
         .catch(console.log);
     },
-    [action]
+    [action, actionName]
   );
 
   return (
