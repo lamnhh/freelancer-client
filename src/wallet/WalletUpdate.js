@@ -36,12 +36,16 @@ function WalletUpdate({ action }) {
       <form onSubmit={onUpdate}>
         <label className="amount-label">
           <span>Amount</span>
-          <input type="text" name="amount" placeholder="$"></input>
+          <input type="text" name="amount" placeholder="$" required></input>
         </label>
 
         <label className="amount-label">
           <span>Password</span>
-          <input type="password" name="password" placeholder="Enter password to continue"></input>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter password to continue"
+            required></input>
         </label>
         <button type="submit">Continue</button>
       </form>
