@@ -170,6 +170,7 @@
   text-transform: none;
   top: calc(100% + 1.2rem);
   position: absolute;
+  z-index: 1000;
 
   &:not(.active) {
     display: none;
