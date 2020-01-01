@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import moment from "moment";
+import Modal from "react-modal";
 import { request } from "../common/config";
 import { Link } from "react-router-dom";
 
@@ -30,18 +31,38 @@ function ChatInfo({ seller }) {
   );
 
   let markAsFinished = useCallback(function(transactionId) {
-    let password = prompt("Please re-enter your password");
-    request(`/api/transaction/${transactionId}/finish`, {
-      method: "POST",
-      body: JSON.stringify({ password })
-    })
-      .then(function() {
-        window.location.reload();
-      })
-      .catch(function({ message }) {
-        alert(message);
-      });
+    setTid(transactionId);
   }, []);
+
+  let [tid, setTid] = useState(null);
+
+  let submitReview = useCallback(
+    async function(e) {
+      e.preventDefault();
+      let form = e.target;
+
+      try {
+        let password = form.password.value;
+        await request(`/api/transaction/${tid}/finish`, {
+          method: "POST",
+          body: JSON.stringify({ password })
+        });
+
+        // Add review if exists
+        let review = form.review.value;
+        if (review) {
+          await request(`/api/transaction/${tid}/review`, {
+            method: "POST",
+            body: JSON.stringify({ review })
+          });
+        }
+        window.location.reload();
+      } catch ({ message }) {
+        alert(message);
+      }
+    },
+    [tid]
+  );
 
   return (
     <div className="chat-info">
@@ -100,6 +121,40 @@ function ChatInfo({ seller }) {
           </div>
         </React.Fragment>
       )}
+      <Modal
+        isOpen={!!tid}
+        onRequestClose={() => setTid(null)}
+        style={{
+          content: {
+            left: "30%",
+            right: "30%",
+            top: "10%",
+            bottom: "unset",
+            padding: "0"
+          }
+        }}>
+        <div className="review-form--wrapper">
+          <div className="review-form--header">Mark order as finished</div>
+          <form className="review-form" onSubmit={submitReview}>
+            <label>
+              <span>Do you want to add a review? (Optional)</span>
+              <textarea name="review"></textarea>
+            </label>
+            <label>
+              <span>Please enter your password to proceed</span>
+              <input type="password" name="password"></input>
+            </label>
+            <div>
+              <button className="submit-btn" type="submit">
+                Continue
+              </button>
+              <button className="cancel-btn" type="button" onClick={() => setTid(null)}>
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </Modal>
     </div>
   );
 }
