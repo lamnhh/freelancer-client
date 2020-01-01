@@ -34,7 +34,12 @@ function JobForm({ initialJob, handleSubmit }) {
           <h1 className="section-title">Overview</h1>
           <label>
             <h3>Job Title</h3>
-            <input type="text" name="name"></input>
+            <input
+              type="text"
+              name="name"
+              placeholder="Job title"
+              defaultValue={job.name}
+              required></input>
           </label>
           <label>
             <h3>Category</h3>
@@ -53,7 +58,11 @@ function JobForm({ initialJob, handleSubmit }) {
 
         <section className="description">
           <h1 className="section-title">Description & FAQ</h1>
-          <textarea name="description" placeholder="Describe your job"></textarea>
+          <textarea
+            name="description"
+            defaultValue={job.description}
+            placeholder="Describe your job"
+            required></textarea>
         </section>
 
         <section className="certification">
@@ -65,7 +74,7 @@ function JobForm({ initialJob, handleSubmit }) {
           <h3 className="section-subtitle">
             Please put them in a single zip file and put the URL to that file here.
           </h3>
-          <input type="text" name="cv_url" placeholder="URL to the zip file"></input>
+          <input type="text" name="cv_url" placeholder="URL to the zip file" required></input>
         </section>
 
         <section className="publish">
