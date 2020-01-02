@@ -5,9 +5,9 @@ import AppContext from "../AppContext";
 
 /**
  * Display a list of transactions
- * @param {{url: String}} props
+ * @param {{url: String, completed: Boolean}} props
  */
-function TransactionList({ url }) {
+function TransactionList({ url, completed = false }) {
   let [transactionList, setTransactionList] = useState([]);
 
   useEffect(
@@ -46,16 +46,14 @@ function TransactionList({ url }) {
       <div className="transaction-list-item">
         <span></span>
         <span></span>
-        <span>ORDER DATE</span>
+        <span>{completed ? "DELIVERED ON" : "ORDERED ON"}</span>
         <span>TOTAL</span>
+        <span>STATUS</span>
         <span>ACTIONS</span>
       </div>
       {shownList.map(function(transaction) {
         return (
-          <TransactionListItem
-            key={transaction.id}
-            isMine={tab === 0}
-            transaction={transaction}></TransactionListItem>
+          <TransactionListItem key={transaction.id} transaction={transaction}></TransactionListItem>
         );
       })}
     </div>

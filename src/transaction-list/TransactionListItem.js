@@ -3,7 +3,35 @@ import moment from "moment";
 import numeral from "numeral";
 import { Link } from "react-router-dom";
 
-function TransactionListItem({ transaction, isMine }) {
+function TransactionStatus({ transaction }) {
+  let badgeType = null;
+  let text = null;
+
+  if (!transaction.is_finished) {
+    badgeType = "gray";
+    text = "On-going";
+  } else if (transaction.refund === null) {
+    badgeType = "green";
+    text = "Finished";
+  } else if (transaction.refund.status === null) {
+    badgeType = "orange";
+    text = "Requested for refund";
+  } else if (transaction.refund.status) {
+    badgeType = "red";
+    text = "Refunded";
+  } else {
+    badgeType = "green";
+    text = "Finished";
+  }
+
+  return (
+    <div className="badge-container">
+      <span className={"badge badge-" + badgeType}>{text}</span>;
+    </div>
+  );
+}
+
+function TransactionListItem({ transaction }) {
   return (
     <div className="transaction-list-item">
       <span>
@@ -17,8 +45,13 @@ function TransactionListItem({ transaction, isMine }) {
       <span className="job-name">
         <Link to={"/job/" + transaction.job_id}>{transaction.job_name}</Link>
       </span>
-      <span className="order-date">{moment(transaction.created_at).format("YYYY-MM-DD")}</span>
+      <span className="order-date">
+        {moment(transaction.is_finished ? transaction.finished_at : transaction.created_at).format(
+          "YYYY-MM-DD"
+        )}
+      </span>
       <span className="price">{numeral(transaction.price).format("$0,0.00")}</span>
+      <TransactionStatus transaction={transaction}></TransactionStatus>
       <span className="action">
         <Link to={"/chat/" + transaction.seller.username}>
           <button title="Contact">Message</button>

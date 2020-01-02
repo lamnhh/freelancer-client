@@ -10,7 +10,7 @@
 .transaction-list-item {
   border-top: 0.1rem solid #ddd;
   display: grid;
-  grid-template-columns: 5.6rem 8fr 2fr 1.5fr 1fr;
+  grid-template-columns: 5.6rem 5fr 2fr 1.5fr 2.5fr 1fr;
   padding: 1.2rem 2.4rem 1.2rem 1.6rem;
 }
 
@@ -27,7 +27,7 @@
   width: 5.6rem;
 }
 
-.transaction-list-item span {
+.transaction-list-item span:not(.badge) {
   font-size: 1.6rem;
   line-height: 1.5;
 }
@@ -108,4 +108,33 @@
     width: 100%;
     background: #1dbf73;
   }
+}
+
+.badge {
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 450;
+  padding: 0.6rem 1.2rem;
+  text-transform: uppercase;
+  &-gray {
+    background-color: #6c757d;
+  }
+  &-green {
+    background-color: #28a745;
+  }
+  &-orange {
+    color: #212529;
+    font-weight: bold;
+    background-color: #ffc107;
+  }
+  &-red {
+    background-color: #dc3545;
+  }
+}
+
+.badge-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }

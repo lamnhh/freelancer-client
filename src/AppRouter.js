@@ -17,6 +17,7 @@ import UploadJob from "./job-form/UploadJob";
 import UpdateJob from "./job-form/UpdateJob";
 import OngoingTransactionList from "./transaction-list/OngoingTransactionList";
 import CompletedTransactionList from "./transaction-list/CompletedTransactionList";
+import RefundForm from "./refund/RefundForm";
 
 function App() {
   // user === null <=> User has not logged in.
@@ -95,6 +96,10 @@ function App() {
             </Route>
             <Route path="/completed">
               <CompletedTransactionList></CompletedTransactionList>
+            </Route>
+
+            <Route path="/refund/:id">
+              <RefundForm></RefundForm>
             </Route>
           </Switch>
           <Footer></Footer>

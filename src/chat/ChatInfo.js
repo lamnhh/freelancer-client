@@ -109,11 +109,12 @@ function ChatInfo({ seller }) {
                     {moment(transaction.created_at).format("YYYY-MM-DD")}
                   </h3>
                   <span>
-                    {moment().diff(transaction.finished_at) <= 86400000 * 3 && (
-                      <Link to={"/refund/" + transaction.id}>
-                        <button type="button">Refund</button>
-                      </Link>
-                    )}
+                    {moment().diff(transaction.finished_at) <= 86400000 * 3 &&
+                      transaction.refund === null && (
+                        <Link to={"/refund/" + transaction.id}>
+                          <button type="button">Refund</button>
+                        </Link>
+                      )}
                   </span>
                 </div>
               );

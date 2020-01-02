@@ -5,7 +5,7 @@ function CompletedTransactionList() {
   return (
     <div className="transaction-list__wrapper align-left-right">
       <h1 className="transaction-list__title">Completed orders</h1>
-      <TransactionList url="/api/transaction?finished=1"></TransactionList>
+      <TransactionList url="/api/transaction?finished=1" completed={true}></TransactionList>
     </div>
   );
 }
