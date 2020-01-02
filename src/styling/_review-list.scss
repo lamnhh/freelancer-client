@@ -1,10 +1,7 @@
 .review-list--item {
-  border-top: 0.1rem solid #ddd;
+  border-bottom: 0.1rem solid #ddd;
   font-size: 1.8rem;
   padding: 2rem 0;
-  &:last-child {
-    border-bottom: 0.1rem solid #ddd;
-  }
 }
 
 .review-list {
