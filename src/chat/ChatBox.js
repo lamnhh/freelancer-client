@@ -14,10 +14,6 @@ function ChatBox({ socket, receiver }) {
         return;
       }
       function onReceiveMessageList(username, messageList) {
-        if (username !== receiver) {
-          alert("Wait am inute");
-          return;
-        }
         setMessageList((p) => p.concat(messageList));
         messageBox.current.scrollTop = messageBox.current.scrollHeight;
       }
