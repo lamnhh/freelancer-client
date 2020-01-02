@@ -36,8 +36,11 @@ function HeaderDropdown({ user }) {
         <Link to="/wallet">
           <p>Wallet</p>
         </Link>
+        <Link to="/ongoing">
+          <p className="divider">Ongoing orders</p>
+        </Link>
         <Link to="/completed">
-          <p className="divider">Completed orders</p>
+          <p>Completed orders</p>
         </Link>
         <Link to="/logout">
           <p className="divider">Logout</p>
