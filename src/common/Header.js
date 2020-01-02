@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { request } from "./config";
 import AppContext from "../AppContext";
 import HeaderDropdown from "./HeaderDropdown";
+import NotificationDropdown from "./NotificationDropdown";
 
 function Header() {
   let [categoryList, setCategoryList] = useState([]);
@@ -52,6 +53,7 @@ function Header() {
                   Messages
                 </button>
               </Link>
+              <NotificationDropdown user={user}></NotificationDropdown>
               <HeaderDropdown user={user}></HeaderDropdown>
             </React.Fragment>
           ) : (
