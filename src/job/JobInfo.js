@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import emptyJob from "./helper";
+import ReviewList from "../review-list/ReviewList";
+import SellerInfo from "../common/SellerInfo";
 
 /**
  * Display information (name, description, type) of a job.
@@ -7,6 +9,8 @@ import emptyJob from "./helper";
  */
 function JobInfo({ job: initialJob }) {
   let job = initialJob || emptyJob;
+  let [reviewCount, setReviewCount] = useState(0);
+
   return (
     <div>
       <div className="breadcrumb">
@@ -24,6 +28,20 @@ function JobInfo({ job: initialJob }) {
         alt=""
         src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs2/98429895/original/9a7c8dc5094709b180341d6ba2e1ba6942dfc195/create-custom-logotype-for-your-business.png"></img>
       <p className="job-description">{job.description}</p>
+
+      <h2 style={{ marginTop: "4rem" }} className="job-name">
+        About The Seller
+      </h2>
+      <SellerInfo
+        user={{ username: job.username, bio: job.user_bio }}
+        horizontal={true}></SellerInfo>
+
+      <h2 style={{ marginTop: "4rem" }} className="job-name">
+        {reviewCount} Review{reviewCount > 1 ? "s" : ""}
+      </h2>
+      {job.id && (
+        <ReviewList url={`/api/job/${job.id}/review`} setReviewCount={setReviewCount}></ReviewList>
+      )}
     </div>
   );
 }

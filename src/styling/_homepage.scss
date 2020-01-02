@@ -25,6 +25,12 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
+  &-2 {
+    grid-template-columns: repeat(3, 1fr);
+    .job-card__image {
+      height: 20rem;
+    }
+  }
   a {
     display: block;
   }
