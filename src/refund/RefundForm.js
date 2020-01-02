@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import numeral from "numeral";
 import { useParams } from "react-router-dom";
 import { request } from "../common/config";
@@ -14,7 +14,25 @@ function RefundForm() {
     [transactionId]
   );
 
-  console.log(transaction);
+  let onRequest = useCallback(function(e) {
+    e.preventDefault();
+
+    let transactionId = e.target.transactionId.value;
+    let reason = e.target.reason.value;
+
+    request("/api/refund/" + transactionId, {
+      method: "POST",
+      body: JSON.stringify({ reason })
+    })
+      .then(function() {
+        alert("Your refund request has been received");
+        window.location.reload();
+      })
+      .catch(function({ message }) {
+        alert(message);
+      });
+  }, []);
+
   return (
     <div className="refund-form--wrapper">
       <div className="refund-form--header align-left-right">
@@ -26,7 +44,7 @@ function RefundForm() {
       </div>
 
       <div className="refund-form align-left-right">
-        <form>
+        <form onSubmit={onRequest}>
           <div className="refund-form__sorry">
             <h2>Refund order</h2>
             <p>
@@ -61,10 +79,13 @@ function RefundForm() {
               <h2 className="title">Job Description</h2>
               <p className="job-description">{transaction.job_description}</p>
               <h2 className="title">Freelancer's CV</h2>
-              <a href={transaction.cv_url} target="_blank">
+              <a href={transaction.cv_url} target="_blank" rel="noopener noreferrer">
                 <p className="job-cv">{transaction.cv_url}</p>
               </a>
-              <a href={"/dashboard/" + transaction.seller.username} target="_blank">
+              <a
+                href={"/dashboard/" + transaction.seller.username}
+                target="_blank"
+                rel="noopener noreferrer">
                 <button type="button">View freelancer profile</button>
               </a>
             </React.Fragment>
