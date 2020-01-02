@@ -6,6 +6,7 @@ let emptyJob = {
   type: "",
   username: "",
   fullname: "",
+  user_bio: "",
   price_list: [{ price: 0, description: "" }]
 };
 
@@ -17,6 +18,7 @@ let emptyJobEmptyPriceList = {
   type: "",
   username: "",
   fullname: "",
+  user_bio: "",
   price_list: []
 };
 

@@ -17,27 +17,30 @@ function displayWithLineBreak(text) {
   });
 }
 
-function SellerInfo({ job, horizontal = true }) {
+function SellerInfo({ user, horizontal = true }) {
   let [skillList, setSkillList] = useState([]);
   useEffect(
     function() {
-      request(`/api/account/${job.username}/skill`)
+      if (!user.username) {
+        return;
+      }
+      request(`/api/account/${user.username}/skill`)
         .then(setSkillList)
         .catch(console.log);
     },
-    [job.username]
+    [user.username]
   );
 
   return (
     <React.Fragment>
       <div className={"seller-info" + (horizontal ? " horizontal" : "")}>
         <div>
-          <span className="seller-info__avatar">{job.username[0]}</span>
+          <span className="seller-info__avatar">{user.username[0]}</span>
         </div>
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-          <p className="seller-info__username">{job.username}</p>
+          <p className="seller-info__username">{user.username}</p>
           <p className="seller-info__quote">Customer Satisfaction is my top Priority</p>
-          <Link to={"/chat/" + job.username}>
+          <Link to={"/chat/" + user.username}>
             <button type="button">Contact Me</button>
           </Link>
         </div>
@@ -45,7 +48,7 @@ function SellerInfo({ job, horizontal = true }) {
       <div className="seller-extra-info">
         <div className="seller-extra-info--item">
           <h2 className="seller-extra-info--item-title">Description</h2>
-          <p className="seller-extra-info__description">{displayWithLineBreak(job.user_bio)}</p>
+          <p className="seller-extra-info__description">{displayWithLineBreak(user.bio)}</p>
         </div>
         <div className="seller-extra-info--item">
           <h2 className="seller-extra-info--item-title">Skills</h2>

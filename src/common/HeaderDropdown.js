@@ -30,7 +30,7 @@ function HeaderDropdown({ user }) {
         <Link to="/user-profile">
           <p>Profile</p>
         </Link>
-        <Link to="/dashboard">
+        <Link to={"/dashboard/" + user.username}>
           <p>Dashboard</p>
         </Link>
         <Link to="/wallet">

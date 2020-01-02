@@ -4,20 +4,22 @@ import { request } from "../common/config";
 
 /**
  * Display reviews fetched from `url`.
- * @param {{url: String, showJobInfo: Boolean, setReviewCount: Function}} props
+ * @param {{url: String, setReviewCount: Function}} props
  */
-function ReviewList({ url, showJobInfo = false, setReviewCount }) {
+function ReviewList({ url, setReviewCount }) {
   let [reviewList, setReviewList] = useState([]);
   useEffect(
     function() {
       request(url)
         .then(function(reviewList) {
           setReviewList(reviewList);
-          setReviewCount(reviewList.length);
+          if (setReviewCount) {
+            setReviewCount(reviewList.length);
+          }
         })
         .catch(console.log);
     },
-    [url]
+    [url, setReviewCount]
   );
 
   return (

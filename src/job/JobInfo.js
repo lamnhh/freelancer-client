@@ -32,7 +32,9 @@ function JobInfo({ job: initialJob }) {
       <h2 style={{ marginTop: "4rem" }} className="job-name">
         About The Seller
       </h2>
-      <SellerInfo job={job} horizontal={true}></SellerInfo>
+      <SellerInfo
+        user={{ username: job.username, bio: job.user_bio }}
+        horizontal={true}></SellerInfo>
 
       <h2 style={{ marginTop: "4rem" }} className="job-name">
         {reviewCount} Review{reviewCount > 1 ? "s" : ""}

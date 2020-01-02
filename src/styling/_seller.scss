@@ -3,7 +3,7 @@
   background-color: #ccc;
   border-radius: 50%;
   color: #fff;
-  display: flex;
+  display: inline-flex;
   font-size: 6.4rem;
   font-weight: bold;
   height: 10rem;
@@ -19,6 +19,20 @@
   padding: 2rem 4rem;
   &.horizontal {
     display: flex;
+  }
+  &:not(.horizontal) {
+    border: 0.1rem solid #ccc;
+    & > div {
+      text-align: center;
+    }
+    .seller-info__avatar {
+      height: 15rem;
+      margin: 3rem;
+      width: 15rem;
+    }
+    .seller-info__username {
+      margin-bottom: 1.2rem;
+    }
   }
 }
 

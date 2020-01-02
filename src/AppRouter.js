@@ -18,6 +18,7 @@ import UpdateJob from "./job-form/UpdateJob";
 import OngoingTransactionList from "./transaction-list/OngoingTransactionList";
 import CompletedTransactionList from "./transaction-list/CompletedTransactionList";
 import RefundForm from "./refund/RefundForm";
+import Dashboard from "./dashboard/Dashboard";
 
 function App() {
   // user === null <=> User has not logged in.
@@ -100,6 +101,10 @@ function App() {
 
             <Route path="/refund/:id">
               <RefundForm></RefundForm>
+            </Route>
+
+            <Route path="/dashboard/:username">
+              <Dashboard></Dashboard>
             </Route>
           </Switch>
           <Footer></Footer>
