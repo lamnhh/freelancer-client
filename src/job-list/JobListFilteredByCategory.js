@@ -52,8 +52,12 @@ function JobListFilteredByCategory() {
       </div>
 
       <div className="pagination">
-        <button onClick={() => setPage((p) => p - 1)}>Prev</button>
-        <button onClick={() => setPage((p) => p + 1)}>Next</button>
+        <button onClick={() => setPage((p) => Math.max(1, p - 1))}>
+          <i className="fa fa-chevron-left"></i>
+        </button>
+        <button onClick={() => setPage((p) => p + 1)}>
+          <i className="fa fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   );
