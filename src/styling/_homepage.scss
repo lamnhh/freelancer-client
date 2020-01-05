@@ -19,6 +19,9 @@
     font-size: 2.4rem;
     line-height: 1.5;
   }
+  &:last-child {
+    margin-bottom: 4rem;
+  }
 }
 
 .job-list {
@@ -32,7 +35,7 @@
     }
   }
   a {
-    display: block;
+    display: flex;
   }
 }
 
