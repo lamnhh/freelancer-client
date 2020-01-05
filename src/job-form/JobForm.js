@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { request } from "../common/config";
 import Pricing from "./Pricing";
+import { toast } from "react-toastify";
 
 /**
  * Display a form to create/update a job
@@ -35,7 +36,7 @@ function JobForm({ initialJob, handleSubmit }) {
       e.preventDefault();
 
       if (priceList.length === 0) {
-        alert("Please create at least 1 price tier");
+        toast.error("Please create at least 1 price tier");
         return;
       }
 

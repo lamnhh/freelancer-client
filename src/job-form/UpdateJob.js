@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import JobForm from "./JobForm";
 import { useParams, useHistory } from "react-router-dom";
 import { request } from "../common/config";
+import { toast } from "react-toastify";
 
 function UpdateJob() {
   let { id: jobId } = useParams();
@@ -25,11 +26,11 @@ function UpdateJob() {
         body: JSON.stringify(job)
       })
         .then(function(job) {
-          alert("Update successfully");
+          toast.success("Update successfully");
           history.push("/job/" + job.id);
         })
         .catch(function({ message }) {
-          alert(message);
+          toast.error(message);
         });
     },
     [jobId, history]

@@ -3,6 +3,7 @@ import emptyJob from "./helper";
 import ReviewList from "../review-list/ReviewList";
 import SellerInfo from "../common/SellerInfo";
 import { generateAvatar, generateCover } from "../common/placeholder-images";
+import { displayWithLineBreak } from "../common/config";
 
 /**
  * Display information (name, description, type) of a job.
@@ -24,7 +25,7 @@ function JobInfo({ job: initialJob }) {
         <span>{job.fullname || "Lord Chin-Chin"}</span>
       </div>
       <img alt="" src={generateCover()}></img>
-      <p className="job-description">{job.description}</p>
+      <p className="job-description">{displayWithLineBreak(job.description)}</p>
 
       <h2 style={{ marginTop: "4rem" }} className="job-name">
         About The Seller

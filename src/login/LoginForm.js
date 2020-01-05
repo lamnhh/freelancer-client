@@ -2,6 +2,7 @@ import React, { useCallback, useContext } from "react";
 import { request } from "../common/config";
 import { Link, useHistory } from "react-router-dom";
 import AppContext from "../AppContext";
+import { toast } from "react-toastify";
 
 function LoginForm() {
   let history = useHistory();
@@ -24,8 +25,8 @@ function LoginForm() {
           setUser(user);
           history.goBack();
         })
-        .catch(function(err) {
-          alert(err.message);
+        .catch(function({ message }) {
+          toast.error(message);
         });
     },
     [setUser, history]

@@ -1,3 +1,5 @@
+import React from "react";
+
 let BACKEND_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
@@ -40,4 +42,19 @@ function request(url, options = {}, sendJson = true) {
     });
 }
 
-export { BACKEND_URL, request };
+function displayWithLineBreak(text) {
+  if (!text) {
+    text = "";
+  }
+  let tokens = text.split("\n");
+  return tokens.map(function(token, idx) {
+    return (
+      <React.Fragment key={idx}>
+        {idx > 0 && <br></br>}
+        {token}
+      </React.Fragment>
+    );
+  });
+}
+
+export { BACKEND_URL, request, displayWithLineBreak };

@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { request } from "../common/config";
+import { toast } from "react-toastify";
 
 /**
  * Component to update (top up/withdraw) money.
@@ -23,9 +24,11 @@ function WalletUpdate({ action }) {
         })
       })
         .then(function() {
-          alert(actionName + " successfully");
+          toast.success(actionName + " successfully");
         })
-        .catch(console.log);
+        .catch(function({ message }) {
+          toast.error(message);
+        });
     },
     [action, actionName]
   );

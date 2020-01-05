@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import numeral from "numeral";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { request } from "../common/config";
+import { toast } from "react-toastify";
 
 function RefundForm() {
   let { id: transactionId } = useParams();
@@ -14,24 +15,32 @@ function RefundForm() {
     [transactionId]
   );
 
-  let onRequest = useCallback(function(e) {
-    e.preventDefault();
+  let history = useHistory();
 
-    let transactionId = e.target.transactionId.value;
-    let reason = e.target.reason.value;
+  let onRequest = useCallback(
+    function(e) {
+      e.preventDefault();
 
-    request("/api/refund/" + transactionId, {
-      method: "POST",
-      body: JSON.stringify({ reason })
-    })
-      .then(function() {
-        alert("Your refund request has been received");
-        window.location.reload();
+      let transactionId = e.target.transactionId.value;
+      let reason = e.target.reason.value;
+
+      request("/api/refund/" + transactionId, {
+        method: "POST",
+        body: JSON.stringify({ reason })
       })
-      .catch(function({ message }) {
-        alert(message);
-      });
-  }, []);
+        .then(function() {
+          toast.success("Your refund request has been received", {
+            onClose: function() {
+              history.goBack();
+            }
+          });
+        })
+        .catch(function({ message }) {
+          toast.error(message);
+        });
+    },
+    [history]
+  );
 
   return (
     <div className="refund-form--wrapper">

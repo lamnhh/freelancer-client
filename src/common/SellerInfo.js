@@ -1,21 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { request } from "./config";
-
-function displayWithLineBreak(text) {
-  if (!text) {
-    text = "";
-  }
-  let tokens = text.split("\n");
-  return tokens.map(function(token, idx) {
-    return (
-      <React.Fragment key={idx}>
-        {idx > 0 && <br></br>}
-        {token}
-      </React.Fragment>
-    );
-  });
-}
+import { request, displayWithLineBreak } from "./config";
 
 function SellerInfo({ user, horizontal = true }) {
   let [skillList, setSkillList] = useState([]);
