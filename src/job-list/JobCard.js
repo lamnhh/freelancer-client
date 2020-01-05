@@ -1,6 +1,7 @@
 import React from "react";
 import numeral from "numeral";
 import { Link } from "react-router-dom";
+import { generateCover, generateAvatar } from "../common/placeholder-images";
 
 /**
  * Find min and max price of a job, used to display in job-card as, for example,
@@ -31,12 +32,10 @@ function JobCard({ job }) {
     <Link to={"/job/" + job.id} className="job-card">
       <img
         className="job-card__image"
-        src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/103150660/original/e067349cc881304e0a3141d8c9d55d949892b678.png"
+        src={generateCover()}
         alt={"Preview image for " + job.name}></img>
       <div className="job-card__uploader">
-        <img
-          src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/84200a96950dbf2b7500c413aedc80bd-1517158761152/9d5ec520-2b74-4bee-91e4-42831a432b16.jpg"
-          alt="Uploader of this job"></img>
+        <img src={generateAvatar()} alt="Uploader of this job"></img>
         <span>{job.fullname || "Lord Chin-Chin"}</span>
       </div>
       <div className="job-card__description">
