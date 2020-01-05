@@ -1,21 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { request } from "./config";
-
-function displayWithLineBreak(text) {
-  if (!text) {
-    text = "";
-  }
-  let tokens = text.split("\n");
-  return tokens.map(function(token, idx) {
-    return (
-      <React.Fragment key={idx}>
-        {idx > 0 && <br></br>}
-        {token}
-      </React.Fragment>
-    );
-  });
-}
+import { request, displayWithLineBreak } from "./config";
 
 function SellerInfo({ user, horizontal = true }) {
   let [skillList, setSkillList] = useState([]);
@@ -35,11 +20,15 @@ function SellerInfo({ user, horizontal = true }) {
     <React.Fragment>
       <div className={"seller-info" + (horizontal ? " horizontal" : "")}>
         <div>
-          <span className="seller-info__avatar">{user.username[0]}</span>
+          <Link to={"/dashboard/" + user.username}>
+            <span className="seller-info__avatar">{user.username[0]}</span>
+          </Link>
         </div>
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-          <p className="seller-info__username">{user.username}</p>
-          <p className="seller-info__quote">Customer Satisfaction is my top Priority</p>
+          <Link to={"/dashboard/" + user.username}>
+            <p className="seller-info__username">{user.username}</p>
+            <p className="seller-info__quote">Customer Satisfaction is my top Priority</p>
+          </Link>
           <Link to={"/chat/" + user.username}>
             <button type="button">Contact Me</button>
           </Link>

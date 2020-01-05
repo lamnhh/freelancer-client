@@ -1,6 +1,7 @@
 import React, { useContext, useCallback } from "react";
 import AppContext from "../AppContext";
 import { request } from "../common/config";
+import { toast } from "react-toastify";
 
 function UserProfile() {
   let { user, setUser } = useContext(AppContext);
@@ -28,10 +29,10 @@ function UserProfile() {
         .then(function(user) {
           setUser(user);
           localStorage.setItem("user", JSON.stringify(user));
-          alert("Update successfully");
+          toast.success("Update successfully");
         })
         .catch(function({ message }) {
-          alert(message);
+          toast.error(message);
         });
     },
     [setUser]

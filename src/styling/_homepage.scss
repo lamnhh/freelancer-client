@@ -49,3 +49,29 @@
     transform: translateY(-90%);
   }
 }
+
+.pagination {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: 0.1rem solid #bbb;
+    color: #666;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1.6rem;
+    height: 4rem;
+    justify-content: center;
+    width: 5rem;
+    &:focus,
+    &:hover {
+      background-color: #eee;
+      outline: none;
+    }
+  }
+  button + button {
+    margin-left: 1rem;
+  }
+}

@@ -21,27 +21,33 @@
 
 .job-tiers {
   border: 0.1rem solid #ddd;
+  margin-top: 2.1rem;
 }
 
 .job-tiers__selector {
   display: grid;
+  direction: rtl;
   border-bottom: 0.1rem solid #ddd;
 }
 
 .job-tiers__choice {
   cursor: pointer;
-  font-size: 2.4rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 500;
   text-align: center;
   padding: 1.2rem;
   &.active {
-    color: #1fd0b6;
-    border-bottom: 0.3rem solid #1fd0b6;
+    color: #1dbf73;
+    border-bottom: 0.3rem solid #1dbf73;
+  }
+  &:not(.active) {
+    background-color: #f4f4f4;
+    font-weight: 400;
   }
 }
 
 .job-tiers__choice + .job-tiers__choice {
-  border-left: 0.1rem solid #ddd;
+  border-right: 0.1rem solid #ddd;
 }
 
 .job-tiers__description {
@@ -49,7 +55,7 @@
 }
 
 .job-tiers__submit {
-  background-color: #222;
+  background-color: #1dbf73;
   border: none;
   border-radius: 0.4rem;
   color: #fff;
@@ -59,4 +65,29 @@
   margin-top: 3rem;
   padding: 1.2rem;
   width: 100%;
+  &:focus,
+  &:hover {
+    background-color: lighten(#1dbf73, 5%);
+    outline: none;
+  }
+}
+
+.job-tiers__name {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.job-tiers__price {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+  margin: 0;
+}
+
+.job-tiers__more-info {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }

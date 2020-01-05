@@ -3,6 +3,7 @@ import moment from "moment";
 import Modal from "react-modal";
 import { request } from "../common/config";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 /**
  * Display orders from `seller` in chat box.
@@ -58,7 +59,7 @@ function ChatInfo({ seller }) {
         }
         window.location.reload();
       } catch ({ message }) {
-        alert(message);
+        toast.error(message);
       }
     },
     [tid]
