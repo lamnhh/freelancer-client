@@ -34,9 +34,13 @@
       margin-bottom: 1.2rem;
     }
   }
+  a {
+    text-decoration: none;
+  }
 }
 
 .seller-info__username {
+  color: #000;
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0;

@@ -20,11 +20,15 @@ function SellerInfo({ user, horizontal = true }) {
     <React.Fragment>
       <div className={"seller-info" + (horizontal ? " horizontal" : "")}>
         <div>
-          <span className="seller-info__avatar">{user.username[0]}</span>
+          <Link to={"/dashboard/" + user.username}>
+            <span className="seller-info__avatar">{user.username[0]}</span>
+          </Link>
         </div>
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-          <p className="seller-info__username">{user.username}</p>
-          <p className="seller-info__quote">Customer Satisfaction is my top Priority</p>
+          <Link to={"/dashboard/" + user.username}>
+            <p className="seller-info__username">{user.username}</p>
+            <p className="seller-info__quote">Customer Satisfaction is my top Priority</p>
+          </Link>
           <Link to={"/chat/" + user.username}>
             <button type="button">Contact Me</button>
           </Link>
