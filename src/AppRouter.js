@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import RegisterPage from "./register/RegisterPage";
 import LoginPage from "./login/LoginPage";
 import Homepage from "./homepage/Homepage";
@@ -19,11 +20,21 @@ import OngoingTransactionList from "./transaction-list/OngoingTransactionList";
 import CompletedTransactionList from "./transaction-list/CompletedTransactionList";
 import RefundForm from "./refund/RefundForm";
 import Dashboard from "./dashboard/Dashboard";
+import LoadingOverlay from "./common/LoadingOverlay";
 
 function App() {
   // user === null <=> User has not logged in.
   // Otherwise, user contains information of the current user.
   let [user, setUser] = useState(null);
+
+  // Manage loading animation
+  let [isLoading, setIsLoading] = useState(false);
+  let startLoading = useCallback(function() {
+    setIsLoading(true);
+  }, []);
+  let stopLoading = useCallback(function() {
+    setIsLoading(false);
+  }, []);
 
   // Upon start, read user information from localStorage to initialise.
   useEffect(function() {
@@ -38,10 +49,14 @@ function App() {
     <AppContext.Provider
       value={{
         user,
-        setUser
+        setUser,
+        startLoading,
+        stopLoading
       }}>
       <BrowserRouter>
         <div>
+          <LoadingOverlay active={isLoading}></LoadingOverlay>
+          <ToastContainer autoClose={2000}></ToastContainer>
           <Header></Header>
           <Switch>
             <Route path="/register">

@@ -1,7 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import numeral from "numeral";
 import { request } from "../common/config";
 import emptyJob from "./helper";
+import AppContext from "../AppContext";
+import { toast } from "react-toastify";
 
 /**
  * Display all price tier of a job
@@ -10,6 +12,7 @@ import emptyJob from "./helper";
 function JobPriceTier({ job: initialJob }) {
   let job = initialJob || emptyJob;
   let [tier, setTier] = useState(0);
+  let { startLoading, stopLoading } = useContext(AppContext);
 
   let jobTierTitle =
     job.price_list.length === 3 ? ["Basic", "Standard", "Premium"] : ["Standard", "Premium"];
@@ -18,21 +21,27 @@ function JobPriceTier({ job: initialJob }) {
     function(e) {
       e.preventDefault();
 
-      request("/api/transaction", {
-        method: "POST",
-        body: JSON.stringify({
-          jobId: job.id,
-          price: job.price_list[tier].price
+      startLoading();
+      setTimeout(function() {
+        request("/api/transaction", {
+          method: "POST",
+          body: JSON.stringify({
+            jobId: job.id,
+            price: job.price_list[tier].price
+          })
         })
-      })
-        .then(function() {
-          alert("Ordered successfully");
-        })
-        .catch(function({ message }) {
-          alert(message);
-        });
+          .then(function() {
+            toast.success("Ordered successfully");
+          })
+          .catch(function({ message }) {
+            toast.error(message);
+          })
+          .then(function() {
+            stopLoading();
+          });
+      }, 500);
     },
-    [job.id, tier, job.price_list]
+    [job.id, tier, job.price_list, startLoading, stopLoading]
   );
 
   return (

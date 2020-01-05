@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
 import App from "./AppRouter";
 import * as serviceWorker from "./serviceWorker";
+
+import "./index.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
