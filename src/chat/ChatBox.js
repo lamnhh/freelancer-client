@@ -42,12 +42,7 @@ function ChatBox({ socket, receiver }) {
 
   return (
     <div className="chat-box">
-      <div
-        ref={messageBox}
-        style={{
-          maxHeight: "70rem",
-          overflowY: "auto"
-        }}>
+      <div ref={messageBox} className="chat-box--container">
         <div className="chat-box__message-list">
           {messageList.map(function(message) {
             return (
